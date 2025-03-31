@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog Submission Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .main {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            background: linear-gradient(to top, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.5) 50%), url(bglogin.png) no-repeat center center fixed;
+            background-position: center;
+            background-size: cover;
+            height: auto;
+        }
+        .header {
+            width: 1200px;
+            height: 75px;
+            margin: auto;
+        }
+        .icon {
+            padding-top: 10px;
+            width: 500px;
+            float: left;
+            height: 100%;
+        }
+        .logo {
+            color: rgb(1, 182, 182);
+            font-size: 48px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding-left: 30px;
+            float: left;
+            padding-top: 15px;
+        }
+        .menu {
+            width: 600px;
+            float: left;
+            height: 70px;
+        }
+        ul {
+            float: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        ul li {
+            list-style: none;
+            margin-left: 70px;
+            margin-top: 30px;
+            font-size: 20px;
+            white-space: nowrap;
+        }
+        ul li a {            
+            text-decoration: none;
+            color: aliceblue;
+            font-family: Arial;
+            transition: 0.1s ease-in-out;
+        }
+        ul li a:hover {
+            color: rgb(1, 182, 182);
+        }
+        .content {
+            width: 1000px;
+            height: auto;
+            padding-top: 35px;
+            margin: 50px auto 0 auto;
+            color: aliceblue;
+            position: relative;
+        }
+        .content h1 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 50px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-align: center;
+            color: rgb(1, 182, 182);
+        }
+        form {
+            background: black;
+            border: 3px solid rgb(1, 182, 182);
+            border-radius: 30px;
+            padding: 25px;
+            margin: 20px 0;
+            color: white;
+        }
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: aliceblue;
+        }
+        form input, form textarea, form select {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 20px;
+            color: black;
+            border-radius: 5px;
+            border: 1px solid rgb(1, 182, 182);
+            box-sizing: border-box;
+        }
+        form button {
+            width: 50%;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgb(1, 182, 182);
+            color: black;
+            border: none;
+            border-radius: 30px;
+            transition: 0.2s;
+            font-size: 25px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        form button:hover {
+            background-color: aliceblue;
+        }
+        .star-rating {
+            display: flex;
+            gap: 10px;
+            font-size: 36px;
+            margin-left: 5%;
+            margin-bottom: 30px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .star-rating span {
+            color: #aaa;
+            transition: color 0.2s ease-in-out;
+        }
+        .star-rating span.hovered,
+        .star-rating span.selected {
+            color: gold;
+        }
+        .page {
+            margin-top: 20px; 
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 30px;
+            color: aliceblue;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+        }
+        .page p {
+            margin-bottom: 10px;
+        }
+        .page button {
+            background-color: rgb(1, 182, 182);
+            border: none;
+            color: black;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .page button:hover {
+            background-color: aliceblue;
+        }
+        .file-input {
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgb(1, 182, 182);
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        .social-icons {
+            position: fixed;
+            bottom: 15px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .social-icons a {
+            font-size: 25px;
+            color: aliceblue;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: rgb(1, 182, 182);
+        }
+        .social-icons a.facebook:hover {
+            color: #3b5998;
+        }
+        .social-icons a.instagram:hover {
+            color: #e1306c;
+        }
+        .social-icons a.youtube:hover {
+            color: #ff0000;
+        }
+        .social-icons a.twitter:hover {
+            color: #1da1f2;
+        }
+        .account-btn {
+            background: rgb(1, 182, 182);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: black;
+            border: none;
+            padding: 10px 50px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+        .account-btn:hover {
+            background: aliceblue;
+        }
+        .dropdown-content {
+            position: absolute;
+            background-color: #fff;
+            min-width: 250px;
+            border: 1px solid rgb(1, 182, 182);
+            border-radius: 15px;
+            padding: 20px;
+            z-index: 1;
+            color: black;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: left;
+        }
+        .dropdown-content p {
+            margin: 10px 0;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+        .dropdown-content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent transparent #fff transparent;
+        }
+        .page button a {
+            text-decoration: none; 
+            color: black;
+            font-size: 18px; 
+            font-family: Georgia, 'Times New Roman', Times, serif
+        }
+        .page button a:hover {
+            color: rgb(0, 0, 0); 
+        }         
+        input[type="checkbox"]{
+            width: 30px;
+            height: 30px;
+            padding-top: 10px;
+        }      
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="icon">
+                <h1 class="logo">Catalog Sphere</h1>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="categories.html">HOME</a></li>
+                    <li><a href="guidelines.html" target="_blank">GUIDELINES</a></li>
+                    <li><a href="sellercontactus.html" target="_blank">CONTACT US</a></li>
+                    <li>
+                        <button id="myAccountBtn" class="account-btn">My Account</button>
+                        <div id="accountDropdown" class="dropdown-content" style="display: none;">
+                            <p id="userEmail">Email: </p>
+                            <p id="userCode">Company Code: </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <form>
+                <h1>Submit Your Catalog</h1>
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="furniture">Furniture</option>        
+                    <option value="electronics">Electronics</option>
+                    <option value="stationary">Stationery</option>
+                    <option value="others">Others</option>
+                </select>
+
+                <label for="product-name">Product Title:</label>
+                <input type="text" id="product-name" name="product-name" required>
+
+                <label for="product-description">Product Description:</label>
+                <textarea id="product-description" name="product-description" rows="4" required></textarea>
+
+                <label for="product-price">Product Price:</label>
+                <input type="number" id="product-price" name="product-price" required>
+
+                <label>Product Rating:</label>
+                <div class="star-rating">
+                    <span data-value="1">&#9733;</span>
+                    <span data-value="2">&#9733;</span>
+                    <span data-value="3">&#9733;</span>
+                    <span data-value="4">&#9733;</span>
+                    <span data-value="5">&#9733;</span>
+                </div>
+
+                <label for="rating-proof">Upload Proof of Rating:</label>
+                <input type="file" id="rating-proof" name="rating-proof" accept="image/*" class="file-input" >
+
+                <label for="product-photos">Upload Product Photos:</label>
+                <input type="file" id="product-photos" name="product-photos" accept="image/*" class="file-input" >
+                <input type="file" id="product-photos" name="product-photos" accept="image/*" class="file-input" >
+                <input type="file" id="product-photos" name="product-photos" accept="image/*" class="file-input" >
+
+                <h2>Seller Details</h2>
+
+                <label for="seller-name">Seller's Name:</label>
+                <input type="text" id="seller-name" name="seller-name" required>
+
+                <label for="seller-company">Seller's Company/Shop Name:</label>
+                <input type="text" id="seller-company" name="seller-company" required>
+
+                <label for="experience">Months of Experience in Market:</label>
+                <input type="number" id="experience" name="experience" max="999" required>
+
+                <label for="location">Location of Shop/Company:</label>
+                <select id="location" name="location" required>
+                    <option value="" disabled selected>Select a city</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Bhubaneswar">Bhubaneswar</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Mussoorie">Mussoorie</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Siliguri">Siliguri</option>
+                    <option value="Surat">Surat</option>
+                </select>
+                
+
+                <div class="col">
+                    <div class="one" style="font-size: medium;">
+                        <input type="checkbox" id="login-check" required style="display: inline-block; vertical-align: middle;">
+                        <label for="login-check" style="display: inline-block; vertical-align: middle; padding-left: 10px;">I've read the <a href="guidelines.html" target="_blank" style="text-decoration: underline; color: rgb(1, 182, 182);">guidelines</a> properly</label>
+                    </div>
+                </div>
+
+                <button type="submit">Submit</button>
+
+            </form>
+        </div>
+        <div class="page">
+            <p>If you need help filling out this form, please refer to our guidelines or contact our support team. Our goal is to ensure a smooth experience while listing your products on Catalog Sphere.</p>
+            <button><a href="sellercontactus.html" target="_blank">Contact us</a></button>
+        </div>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
+            <a href="https://twitter.com" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const stars = document.querySelectorAll(".star-rating span");
+        let selectedRating = 0;
+        stars.forEach((star, index) => {
+            star.addEventListener("mouseover", () => {
+                stars.forEach((s, i) => {
+                    s.classList.toggle("hovered", i <= index);
+                });
+            });
+
+            star.addEventListener("mouseout", () => {
+                stars.forEach(s => s.classList.remove("hovered"));
+            });
+
+            star.addEventListener("click", () => {
+                selectedRating = index + 1;
+                stars.forEach((s, i) => {
+                    s.classList.toggle("selected", i < selectedRating);
+                });
+            });
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+         const form = document.querySelector("form");
+
+
+         form.addEventListener("submit", (e) => {
+         e.preventDefault(); 
+
+        const productName = document.querySelector("#product-name").value;
+        const productPrice = document.querySelector("#product-price").value;
+        const productDescription = document.querySelector("#product-description").value;
+        const category = document.querySelector("#category").value;
+        const location = document.querySelector("#location").value; 
+
+        const productPhotos = document.querySelectorAll("#product-photos");
+        const images = [];
+        const fileReaders = [];
+        const products = JSON.parse(localStorage.getItem("products")) || []; 
+
+    productPhotos.forEach((input, index) => {
+        const file = input.files[0];
+    if (file) {
+        const reader = new FileReader();
+        fileReaders.push(reader);
+        reader.onload = (event) => {
+            images.push(event.target.result);
+
+            if (images.length === fileReaders.length) {
+                const newProduct = {
+                    name: productName,
+                    price: productPrice,
+                    description: productDescription,
+                    category: category,
+                    location: location,
+                    images: images,
+                };
+
+                products.push(newProduct);
+                localStorage.setItem("products", JSON.stringify(products));
+                window.open("confirm_seller.html", "_blank");
+                }
+            };
+                reader.readAsDataURL(file);
+            }
+          });
+        });
+    });
+
+       
+    document.addEventListener("DOMContentLoaded", () => {
+        const myAccountBtn = document.querySelector("#myAccountBtn");
+        const accountDropdown = document.querySelector("#accountDropdown");
+
+        const updateAccountDropdown = () => {
+
+            const experienceInput = document.querySelector("#experience");
+
+    experienceInput.addEventListener("input", () => {
+        if (experienceInput.value > 999) {
+            alert("The maximum allowed value for months of experience is 999.");
+            experienceInput.value = ""; 
+        }
+        });
+
+        const form = document.querySelector("form");
+    form.addEventListener("submit", (event) => {
+        if (experienceInput.value > 999) {
+            alert("The maximum allowed value for months of experience is 999.");
+            event.preventDefault();
+        }
+    });
+            const email = localStorage.getItem("userEmail") || "Not logged in";
+            const companyCode = localStorage.getItem("userCode") || "Not logged in";
+
+        
+            document.querySelector("#userEmail").textContent = `Email: ${email}`;
+            document.querySelector("#userCode").textContent = `Company Code: ${companyCode}`;
+        };
+
+        myAccountBtn.addEventListener("click", () => {
+            accountDropdown.style.display =
+                accountDropdown.style.display === "block" ? "none" : "block";
+            updateAccountDropdown();
+        });
+
+        const loginButton = document.querySelector("#loginButton"); 
+        if (loginButton) {
+            loginButton.addEventListener("click", () => {
+                const email = document.querySelector("#email").value; 
+                const companyCode = document.querySelector("#companyCode").value; 
+
+                localStorage.setItem("userEmail", email);
+                localStorage.setItem("userCode", companyCode);
+
+                alert("Logged in successfully!");
+            });
+        }
+        updateAccountDropdown();
+    });           
+</script>
+</html>

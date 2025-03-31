@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url(bglogin.png) no-repeat center center fixed;
+            background-position: center;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .header {
+            width: 1200px;
+            height: 75px;
+            margin: auto;
+        }
+
+        .icon {
+            width: 500px;
+            float: left;
+            height: 100%;
+        }
+
+        .logo {
+            color: rgb(1, 182, 182);
+            font-size: 48px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding-left: 30px;
+            float: left;
+            padding-top: 15px;
+        }
+
+        .menu {
+            width: 600px;
+            float: left;
+            height: 70px;
+        }
+
+        ul {
+            float: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        ul li {
+            list-style: none;
+            margin-left: 70px;
+            margin-top: 30px;
+            font-size: 20px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: aliceblue;
+            font-family: Arial;
+            transition: 0.1s ease-in-out;
+        }
+
+        ul li a:hover {
+            color: rgb(1, 182, 182);
+        }
+
+        .content {
+            width: 1000px;
+            height: auto;
+            margin: 0;
+            color: aliceblue;
+            position: relative;
+            padding-left: 170px;
+        }
+
+        .content .par {
+            padding-top: 30px;
+            padding-bottom: 25px;
+            font-family: Helvetica;
+            letter-spacing: 1px;
+            line-height: 30px;
+            font-size: 19px;
+        }
+
+        .content h1 {
+            font-family: Helvetica;
+            font-size: 50px;
+            margin-top: 12%;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        .login-box {
+            width: 300px;
+            height: 380px;
+            padding: 20px;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            position: absolute;
+            right: 60px;
+            padding: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 3px solid rgb(1, 156, 156);
+        }
+
+        .login-box h2 {
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 30px;
+            color: aliceblue;
+        }
+
+        .login-box label {
+            display: block;
+            margin-bottom: 5px;
+            color: aliceblue;
+            font-size: 19px;
+        }
+
+        .login-box input {
+            width: 90%;
+            height: 5px;
+            background: transparent;
+            border-bottom: 1px solid rgb(1, 182, 182);
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            color: aliceblue;
+            font-size: 20px;
+            padding: 17px;
+            padding-left: 7px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-family: sans-serif;
+        }
+
+        .login-box button {
+            align-items: center;
+            width: 100%;
+            margin-top: 30px;
+            padding: 8px;
+            background-color: rgb(1, 182, 182);
+            color: black;
+            border: none;
+            border-radius: 30px;
+            transition: 0.2s;
+            font-size: 25px;
+            cursor: pointer;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .login-box button:hover {
+            background-color: aliceblue;
+        }
+
+        .social-icons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            font-size: 25px;
+            color: aliceblue;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: rgb(1, 182, 182);
+        }
+
+        .social-icons a.facebook:hover {
+            color: #3b5998;
+        }
+
+        .social-icons a.instagram:hover {
+            color: #e1306c;
+        }
+
+        .social-icons a.youtube:hover {
+            color: #ff0000;
+        }
+
+        .social-icons a.twitter:hover {
+            color: #1da1f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="icon">
+                <h1 class="logo">Catalog Sphere</h1>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="sellerlogin.html">HOME</a></li>
+                    <li><a href="guidelines.html" target="_blank">GUIDELINES</a></li>
+                    <li><a href="sellercontactus.html" target="_blank">CONTACT US</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Welcome user!</h1>
+            <p class="par">As a seller, sign in to your account using your login credentials <br>on the right and add your listings to the Global Catalog Registry<br>hassle-free!</p>
+        </div>
+        <div class="login-box">
+            <h2>Login Here</h2>
+            <form id="login-form">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="company-code">Company Code:</label>
+                <input type="text" id="company-code" name="company-code" required>
+
+                <button type="submit">LOGIN</button>
+            </form>
+        </div>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
+            <a href="https://twitter.com" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+        </div>
+    </div>
+    <script>
+        document.querySelector("form").addEventListener("submit", (event) => {
+            event.preventDefault(); 
+            const email = document.querySelector("#email").value;
+            const companyCode = document.querySelector("#company-code").value;
+
+            // Save to localStorage
+            localStorage.setItem("userEmail", email);
+            localStorage.setItem("userCode", companyCode);
+
+            // Redirect to the next page
+            window.location.href = "categories.html"; // Update this URL to match your submission page
+        });
+    </script>
+</body>
+</html>
+

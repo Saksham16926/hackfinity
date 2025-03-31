@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Account</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-image: url(bglogin.png);
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px; 
+            margin: 0 auto;
+            background: black; 
+            padding: 40px; 
+            border-radius: 30px;
+            border: 3px solid rgb(1, 182, 182);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(1, 182, 182);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: medium;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+            font-size: 16px;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: rgb(1, 182, 182); 
+            color: black; 
+            font-size: medium;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: white; 
+            color: black; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Account</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="buyerType">Are you from a company or an individual buyer?</label>
+                <select id="buyerType">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="company">Company</option>
+                    <option value="individual">Individual Buyer</option>
+                </select>
+            </div>
+
+            <div class="btn-container">
+                <button type="button" class="btn" id="saveChangesBtn">Save Changes</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+
+            const firstName = localStorage.getItem('buyerFirstName');
+            const lastName = localStorage.getItem('buyerLastName');
+            const email = localStorage.getItem('buyerEmail');
+            const buyerType = localStorage.getItem('buyerType');
+
+            document.getElementById('name').value = `${firstName} ${lastName}`;
+            document.getElementById('email').value = email;
+            if (buyerType) {
+            document.getElementById('buyerType').value = buyerType;
+            }
+            document.getElementById('saveChangesBtn').addEventListener('click', () => {
+            const selectedBuyerType = document.getElementById('buyerType').value;
+            if (!selectedBuyerType) {
+                alert('Please select a buyer type before saving.');
+                return;
+            }
+            localStorage.setItem('buyerType', selectedBuyerType);
+            alert('Your changes have been saved successfully!');
+            window.location.href = 'homepagebuyer.html';
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+

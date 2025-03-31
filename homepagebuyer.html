@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Catalog Sphere</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url(bglogin.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: none;
+            padding: 0px;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            background: linear-gradient(to bottom, rgba(39, 39, 39, 0.9), rgba(39, 39, 39, 0.6));
+            padding: 0 20px;
+        }
+        .nav-logo a {
+            text-decoration: none;
+        }
+        .nav-logo p {
+            color: rgb(1, 182, 182);
+            font-size: 35px;
+            font-weight: 600;
+            cursor: default;
+        }
+        .nav-menu ul {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu ul li {
+            list-style-type: none;
+        }
+        .nav-menu ul li .link {
+            text-decoration: none;
+            font-weight: 500;
+            color: #fff;
+            font-size: 25px;
+            padding-bottom: 15px;
+            margin: 0 25px;
+        }
+        .link:hover, .active {
+            border-bottom: 2px solid #fff;
+        }
+        .nav-button .btn {
+            margin: 0;
+            padding: 0;
+            width: 130px;
+            height: 100%;
+            font-weight: 500;
+            font-size: large;
+            background: rgb(1, 182, 182);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        .nav-button .my-account-btn {
+            background: rgb(1, 182, 182);
+            border: none;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .nav-button .my-account-btn:hover {
+            background: rgba(1, 182, 182, 0.8);
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #f3f3f3;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px 16px;
+            width: 450px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .search-bar i {
+            font-size: 25px;
+            color: #b6b6b6;
+            margin-right: 10px;
+        }
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 20px;
+            width: 100%;
+            color: #333;
+        }
+        .search-icon-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        .search-icon-btn:hover i {
+            color: rgb(1, 182, 182);
+        }
+        .profile-icon {
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            margin-top: 30px;
+        }
+        .profile-icon:hover {
+            color: rgb(1, 182, 182);
+        }
+        @media (max-width: 768px) {
+            .profile-icon {
+                margin-top: 3px;
+            }
+        }
+
+        .category-filter {
+            display: flex;
+            align-items: center;
+            background: rgba(39, 39, 39, 0.9);
+            padding: 10px 20px;
+            width: 100%;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+        .category-filter p{
+            font-size: x-large;
+            color: #fff;
+            margin-right: 10px;
+            
+        }
+        .category-filter button {
+            background: rgb(1, 182, 182);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            color: rgb(0, 0, 0);
+            font-size: 16px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .category-filter button:hover {
+            background: rgba(1, 182, 182, 0.8);
+        }
+        .category-filter button.active {
+            background: white;
+            color: rgb(1, 182, 182);
+            border: 1px solid rgb(1, 182, 182);
+        }
+
+        .catalog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            width: 100%;
+            margin-top: 50px;
+            padding-top: 20px;
+        }
+        .catalog-item {
+            width: 250px;
+            border: 3px solid rgb(1, 182, 182);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .catalog-item:hover {
+            transform: translateY(-10px);
+        }
+        .catalog-image {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .catalog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .catalog-details {
+            padding: 15px;
+        }
+        .catalog-details h3 {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .catalog-details p {
+            font-size: 16px;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        .catalog-details .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: black;
+            background-color: rgb(1, 182, 182);
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .catalog-details .btn:hover {
+            background-color: rgba(1, 182, 182, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <a href="#" style="text-decoration: none;">
+                    <p>CATALOG SPHERE</p>
+                </a>
+            </div>
+
+            <div class="search-bar">
+                <button onclick="searchItems()" class="search-icon-btn">
+                    <i class="bx bx-search"></i>
+                </button>
+                <input type="text" placeholder="Search for products, brands and more" id="search">
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="homepagebuyer.html" class="link active">Home</a></li>
+                    <li><a href="contactbuyer.html" class="link" target="_blank">Contact us</a></li>
+                    <li><a href="aboutbuyer.html" class="link" target="_blank">About</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-button">
+                <i class="bx bx-user profile-icon" onclick="openProfile()"></i>
+            </div>
+        </nav>
+
+        <div class="category-filter">
+            <p>Categories : </p>
+            <button onclick="filterByCategory('all')">All</button>
+            <button onclick="filterByCategory('electronics')">Electronics</button>
+            <button onclick="filterByCategory('stationary')">Stationary</button>
+            <button onclick="filterByCategory('furniture')">Furniture</button>
+        </div>
+
+        <div class="catalog-container" id="catalogContainer">
+        </div>
+    </div>
+    
+    <script>
+        function openProfile() {
+            window.open("buyeraccount.html", "_blank");
+        }
+    
+        function searchItems() {
+            const query = document.getElementById('search').value.toLowerCase().trim();
+            const catalogContainer = document.getElementById("catalogContainer");
+            const products = JSON.parse(localStorage.getItem("products")) || [];
+    
+         
+            catalogContainer.innerHTML = "";
+    
+      
+            if (query === "") {
+                products.forEach((product, index) => {
+                    createCatalogItem(product, index);
+                });
+            } else {
+      
+                const filteredProducts = products.filter(product =>
+                    product.name.toLowerCase().includes(query) || 
+                    product.category.toLowerCase().includes(query)
+                );
+    
+                if (filteredProducts.length > 0) {
+                    filteredProducts.forEach((product, index) => {
+                        createCatalogItem(product, index);
+                    });
+                } else {
+                    catalogContainer.innerHTML = `<p>No products found for "${query}".</p>`;
+                }
+            }
+        }
+    
+        function filterByCategory(category) {
+    const catalogContainer = document.getElementById("catalogContainer");
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+
+
+    catalogContainer.innerHTML = "";
+
+
+    const filteredProducts = category === 'all' 
+        ? products 
+        : products.filter(product => product.category.toLowerCase() === category.toLowerCase());
+
+    if (filteredProducts.length > 0) {
+        filteredProducts.forEach((product, index) => {
+            createCatalogItem(product, index);
+        });
+    } else {
+        catalogContainer.innerHTML = `<p>No products found for the "${category}" category.</p>`;
+    }
+
+
+    const buttons = document.querySelectorAll('.category-filter button');
+    buttons.forEach(button => button.classList.remove('active'));
+    const activeButton = [...buttons].find(button => button.textContent.toLowerCase() === category.toLowerCase());
+    if (activeButton) activeButton.classList.add('active');
+}
+
+
+
+        function createCatalogItem(product, index) {
+            const catalogContainer = document.getElementById("catalogContainer");
+    
+            const catalogItem = document.createElement("div");
+            catalogItem.className = "catalog-item";
+    
+            const catalogImage = document.createElement("div");
+            catalogImage.className = "catalog-image";
+            const img = document.createElement("img");
+            img.src = product.images[0];
+            img.alt = "Product Image";
+            catalogImage.appendChild(img);
+    
+            const catalogDetails = document.createElement("div");
+            catalogDetails.className = "catalog-details";
+            catalogDetails.innerHTML = `
+                <h3>${product.name}</h3>
+                <p><strong>Category:</strong> ${product.category}</p>
+                <p><strong>Price:</strong> INR ${product.price}</p>
+                <a href="buyerproductdetails.html?productIndex=${index}" target="_blank" class="btn">See in Detail</a>
+            `;
+    
+            catalogItem.appendChild(catalogImage);
+            catalogItem.appendChild(catalogDetails);
+            catalogContainer.appendChild(catalogItem);
+        }
+    
+        document.getElementById('search').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                searchItems();
+            }
+        });
+    
+        document.addEventListener("DOMContentLoaded", () => {
+            const catalogContainer = document.getElementById("catalogContainer");
+            const products = JSON.parse(localStorage.getItem("products")) || [];
+    
+            if (products.length > 0) {
+                products.forEach((product, index) => {
+                    createCatalogItem(product, index);
+                });
+            } else {
+                catalogContainer.innerHTML = `<p>No products found. Please add products first.</p>`;
+            }
+        });
+    </script> 
+</body>
+</html>
